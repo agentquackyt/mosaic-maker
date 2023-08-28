@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generator</title>
+</head>
+<style>
+    label, input {
+        display: block;
+        padding: 5px;
+    }
+    input[type=file]::file-selector-button,  input[type=number]{
+      border: 2px solid #005555;
+      padding: .2em .4em;
+      margin-left: 3em;
+      border-radius: .2em;
+      background-color: #008787;
+      color: #00ffff;
+      width: 10em;
+      transition: 1s;
+    }
+    body {background-color: #008787;}
+</style>
+<body>
+    <div style="display: block; background-color: #005555; color: #00ffff; font-size: larger; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; width: 600px; padding: 10px; border-radius: 10px;">
+        <label for="imageInput">Insert Image</label>
+        <input type="file" id="imageInput" accept="image/">
+        <label for="pixel_value">Pixel width in mm</label>
+        <input type="number" id="pixel_value" max="5" min="1" value="3"> 
+    </div>
+    <div>
+        <canvas id="canvas" width="1" height="1" style="position: absolute; top: 50%; right: 0; transform: translateY(-50%); height: 600px; image-rendering: pixelated"></canvas>
+    </div>
+    <div>
+        <canvas id="output"></canvas>
+    </div>
+    
+</body>
+<script src="index.js"></script>
+</html>
