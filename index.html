@@ -28,6 +28,7 @@
         <input type="file" id="imageInput" accept="image/">
         <label for="pixel_value">Pixel width in mm</label>
         <input type="number" id="pixel_value" max="5" min="1" value="3"> 
+        <button onclick="javascript:downloadCSV()">Download CSV</button>
     </div>
     <div>
         <canvas id="canvas" width="1" height="1" style="position: absolute; top: 50%; right: 0; transform: translateY(-50%); height: 600px; image-rendering: pixelated"></canvas>

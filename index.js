@@ -102,10 +102,30 @@ async function tableCanvas() {
   for (let y = 0; y < (297/number.value); y++) {
     drawLine(ctx2, 0, y*20, outputCanvas.width, y*20);
   }
-  
-  console.log(bitmap)
+  let bitmap2 = [];
+  for (let y= 0; y < canvas.height; y++) {
+    let add_to_bitmap = []
+    for (let x = 0; x < canvas.width; x++) {
+      add_to_bitmap.push(bitmap[(y*canvas.width)+x]);
+    }
+    bitmap2.push(add_to_bitmap)
+  }
+  console.log(bitmap2)
+  csvContent = bitmap2.map(e => e.join(",")).join("\n");
 }
+let csvContent;
 
+function downloadCSV() {
+  console.log("Downloading CSV")
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8,' })
+  const objUrl = URL.createObjectURL(blob)
+  const link = document.createElement('a')
+  link.setAttribute('href', objUrl)
+  link.setAttribute('download', input.files[0].name+'.csv')
+  link.textContent = 'Click to Download'
+
+  document.querySelector('body').append(link)
+}
 
 function drawLine(ctx, x1, y1, x2,y2, stroke = 'black', width = 1) {
   ctx.beginPath();
